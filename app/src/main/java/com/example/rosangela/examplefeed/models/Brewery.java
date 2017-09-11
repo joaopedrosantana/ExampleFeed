@@ -8,6 +8,7 @@ package com.example.rosangela.examplefeed.models;
 public class Brewery {
     public String name;
     public String formattedAddress;
+    public String photo;
 
     public String getName() {
         return name;
@@ -23,5 +24,13 @@ public class Brewery {
 
     public void setFormattedAddress(String formattedAddress) {
         this.formattedAddress = formattedAddress;
+    }
+
+    public String getLogo() {
+        return photo;
+    }
+
+    public void setLogo(String logo) {
+        this.photo = photo;
     }
 }

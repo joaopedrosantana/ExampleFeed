@@ -1,12 +1,17 @@
 package com.example.rosangela.examplefeed;
 
+import android.content.Context;
+import android.net.Uri;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rosangela.examplefeed.models.Brewery;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +22,30 @@ import java.util.List;
 
 public class AdapterState  extends RecyclerView.Adapter<AdapterState.MyViewHolder> {
     private List<Brewery> dataSet;
+    private Context context;
 
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+
+        TextView textViewName;
+        TextView textAdress;
+        ImageView imageBrewery;
+
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
+            this.textAdress = (TextView) itemView.findViewById(R.id.text_adress);
+            this.imageBrewery=(ImageView) itemView.findViewById(R.id.img_brewery);
+        }
+    }
+    public AdapterState(List<Brewery> dataSet, Context context) {
+        this.dataSet = dataSet;
+        this.context = context;
+
+    }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapterState.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_layout, parent, false);
 
@@ -34,6 +59,11 @@ public class AdapterState  extends RecyclerView.Adapter<AdapterState.MyViewHolde
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.textViewName.setText(dataSet.get(position).getName());
         holder.textAdress.setText(dataSet.get(position).getFormattedAddress());
+        Picasso.with(context)
+                .load(dataSet.get(position).getLogo())
+                .resize(500, 170)
+                .centerCrop()
+                .into(holder.imageBrewery);
     }
 
     @Override
@@ -41,19 +71,5 @@ public class AdapterState  extends RecyclerView.Adapter<AdapterState.MyViewHolde
         return dataSet.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewName;
-        TextView textAdress;
-
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
-            this.textAdress = (TextView) itemView.findViewById(R.id.text_adress);
-        }
-    }
-    public AdapterState(List<Brewery> dataSet) {
-        this.dataSet = dataSet;
-    }
 }

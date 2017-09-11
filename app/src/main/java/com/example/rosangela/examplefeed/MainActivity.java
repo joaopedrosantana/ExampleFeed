@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("Erro2", "Erro:" + response.code());
                 } else {
                     List<Brewery> catalog = response.body().getData();
-                    recyclerView.setAdapter(new AdapterState(catalog));
+                    recyclerView.setAdapter(new AdapterState(catalog, getApplicationContext()));
 
                 }
             }
