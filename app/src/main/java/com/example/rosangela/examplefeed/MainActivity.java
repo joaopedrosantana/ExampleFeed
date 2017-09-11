@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,13 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 if (!response.isSuccessful()) {
                     Log.e("Erro2", "Erro:" + response.code());
                 } else {
-                    BreweryCatalog catalog = response.body();
-                    for (Brewery b : catalog.data) {
-                        Log.e("Cervejarias", String.format("%s: %s", b.name, b.formattedAddress));
-                        Log.e("", "---------");
-                    }
+                    List<Brewery> catalog = response.body().getData();
+                    recyclerView.setAdapter(new AdapterState(catalog));
+
                 }
             }
+
 
             @Override
             public void onFailure(Call<BreweryCatalog> call, Throwable t) {
@@ -71,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
 
-        try {
+       /* try {
             JSONObject obj = new JSONObject(loadJSONFromAsset());
 
             JSONArray jArray = obj.getJSONArray("data");
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new AdapterState(data);
         recyclerView.setAdapter(adapter);
 
-    }
+    }*/
 
     public String loadJSONFromAsset() {
         String json = null;

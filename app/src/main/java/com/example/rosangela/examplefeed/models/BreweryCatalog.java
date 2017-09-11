@@ -8,4 +8,12 @@ import java.util.List;
 
 public class BreweryCatalog {
     public List<Brewery> data;
+
+    public List<Brewery> getData() {
+        return data;
+    }
+
+    public void setData(List<Brewery> data) {
+        this.data = data;
+    }
 }
