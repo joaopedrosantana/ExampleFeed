@@ -9,14 +9,6 @@ import android.util.Log;
 
 import com.example.rosangela.examplefeed.models.Brewery;
 import com.example.rosangela.examplefeed.models.BreweryCatalog;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,10 +19,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
-    private static ArrayList<String> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-
-
             @Override
             public void onFailure(Call<BreweryCatalog> call, Throwable t) {
 
@@ -73,44 +61,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
-       /* try {
-            JSONObject obj = new JSONObject(loadJSONFromAsset());
-
-            JSONArray jArray = obj.getJSONArray("data");
-            data = new ArrayList<String>();
-
-            for (int i = 0; i < jArray.length(); i++) {
-                JSONObject jObject = jArray.getJSONObject(i);
-                Log.e("Details-->", jObject.getString("nome"));
-
-
-                data.add(i, jObject.getString("nome"));
-
-
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        adapter = new AdapterState(data);
-        recyclerView.setAdapter(adapter);
-
-    }*/
-
-    public String loadJSONFromAsset() {
-        String json = null;
-        try {
-            InputStream is = getAssets().open("states.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
-    }
 
 
 }
