@@ -1,6 +1,9 @@
 package com.example.rosangela.examplefeed.Activity;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -25,9 +28,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     android.app.ActionBar actionbar;
-
     TextView textview;
     ActionBar.LayoutParams layoutparams;
+    ProgressDialog dialog;
 
 
     private RecyclerView.LayoutManager layoutManager;
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dialog = ProgressDialog.show(MainActivity.this, "",
+                "Loading...", true);
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -65,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     List<Brewery> catalog = response.body().getData();
                     recyclerView.setAdapter(new AdapterBrewery(catalog, getApplicationContext()));
+                    timerDelayRemoveDialog(4500, dialog);
 
                 }
             }
@@ -83,5 +89,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
-
+    public void timerDelayRemoveDialog(long time, final Dialog d){
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                d.dismiss();
+            }
+        }, time);
+    }
 }
