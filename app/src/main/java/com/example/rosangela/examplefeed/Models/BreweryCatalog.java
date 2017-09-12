@@ -1,4 +1,4 @@
-package com.example.rosangela.examplefeed.models;
+package com.example.rosangela.examplefeed.Models;
 
 import java.util.List;
 

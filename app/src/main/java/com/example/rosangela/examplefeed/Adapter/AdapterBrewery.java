@@ -1,4 +1,4 @@
-package com.example.rosangela.examplefeed;
+package com.example.rosangela.examplefeed.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.rosangela.examplefeed.models.Brewery;
+import com.example.rosangela.examplefeed.R;
+import com.example.rosangela.examplefeed.Models.Brewery;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -18,7 +19,7 @@ import java.util.List;
  * Created by Rosangela on 04/09/2017.
  */
 
-public class AdapterState extends RecyclerView.Adapter<AdapterState.MyViewHolder> {
+public class AdapterBrewery extends RecyclerView.Adapter<AdapterBrewery.MyViewHolder> {
     private List<Brewery> dataSet;
     private Context context;
     private String distance;
@@ -38,14 +39,14 @@ public class AdapterState extends RecyclerView.Adapter<AdapterState.MyViewHolder
         }
     }
 
-    public AdapterState(List<Brewery> dataSet, Context context) {
+    public AdapterBrewery(List<Brewery> dataSet, Context context) {
         this.dataSet = dataSet;
         this.context = context;
 
     }
 
     @Override
-    public AdapterState.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapterBrewery.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_layout, parent, false);
 

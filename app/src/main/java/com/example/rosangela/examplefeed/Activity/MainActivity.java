@@ -1,4 +1,4 @@
-package com.example.rosangela.examplefeed;
+package com.example.rosangela.examplefeed.Activity;
 
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
@@ -8,24 +8,19 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.example.rosangela.examplefeed.models.Brewery;
-import com.example.rosangela.examplefeed.models.BreweryCatalog;
-
+import com.example.rosangela.examplefeed.Adapter.AdapterBrewery;
+import com.example.rosangela.examplefeed.Models.Brewery;
+import com.example.rosangela.examplefeed.Models.BreweryCatalog;
+import com.example.rosangela.examplefeed.R;
+import com.example.rosangela.examplefeed.Services.BreweryService;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import android.widget.RelativeLayout.LayoutParams;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -68,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("Erro2", "Erro:" + response.code());
                 } else {
                     List<Brewery> catalog = response.body().getData();
-                    recyclerView.setAdapter(new AdapterState(catalog, getApplicationContext()));
+                    recyclerView.setAdapter(new AdapterBrewery(catalog, getApplicationContext()));
 
                 }
             }
