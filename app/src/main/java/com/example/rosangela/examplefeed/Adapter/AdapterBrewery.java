@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rosangela.examplefeed.R;
-import com.example.rosangela.examplefeed.Models.Brewery;
+import com.example.rosangela.examplefeed.models.Brewery;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;

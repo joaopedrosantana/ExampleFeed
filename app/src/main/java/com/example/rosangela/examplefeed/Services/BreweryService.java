@@ -1,6 +1,6 @@
 package com.example.rosangela.examplefeed.Services;
 
-import com.example.rosangela.examplefeed.Models.BreweryCatalog;
+import com.example.rosangela.examplefeed.models.BreweryCatalog;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
