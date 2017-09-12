@@ -9,6 +9,7 @@ public class Brewery {
     public String name;
     public String formattedAddress;
     public String photo;
+    public float distance;
 
     public String getName() {
         return name;
@@ -32,5 +33,13 @@ public class Brewery {
 
     public void setLogo(String logo) {
         this.photo = photo;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 }

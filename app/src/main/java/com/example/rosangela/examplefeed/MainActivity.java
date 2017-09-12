@@ -1,14 +1,22 @@
 package com.example.rosangela.examplefeed;
 
+import android.graphics.Color;
+import android.support.design.widget.TabLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.rosangela.examplefeed.models.Brewery;
 import com.example.rosangela.examplefeed.models.BreweryCatalog;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,7 +25,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.widget.RelativeLayout.LayoutParams;
+
+
 public class MainActivity extends AppCompatActivity {
+    android.app.ActionBar actionbar;
+    TextView textview;
+    ActionBar.LayoutParams layoutparams;
+
 
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
@@ -26,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("LISTA"));
+        tabLayout.addTab(tabLayout.newTab().setText("MAPA"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setTabTextColors(Color.DKGRAY, Color.WHITE);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.title_layout);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BreweryService.BASE_URL)
@@ -47,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
+
             @Override
             public void onFailure(Call<BreweryCatalog> call, Throwable t) {
 
@@ -60,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
-
 
 
 }

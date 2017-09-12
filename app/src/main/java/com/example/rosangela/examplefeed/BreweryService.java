@@ -11,8 +11,8 @@ import retrofit2.http.GET;
 
 public interface BreweryService {
 
-    public static final String BASE_URL="http://braunetwork.megaleios.kinghost.net/api/v1/";
+    public static final String BASE_URL = "http://braunetwork.megaleios.kinghost.net/api/v1/";
 
-    @GET("Brewery/0/0/1")
+    @GET("Brewery/-23.557337/-46.660437/1")
     Call<BreweryCatalog> listBrewery();
 }
