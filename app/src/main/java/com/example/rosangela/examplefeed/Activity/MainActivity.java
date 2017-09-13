@@ -13,12 +13,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
+
 import com.example.rosangela.examplefeed.Adapter.AdapterBrewery;
 import com.example.rosangela.examplefeed.models.Brewery;
 import com.example.rosangela.examplefeed.models.BreweryCatalog;
 import com.example.rosangela.examplefeed.R;
 import com.example.rosangela.examplefeed.Services.BreweryService;
+
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private RecyclerView.LayoutManager layoutManager;
-    private static RecyclerView recyclerView;
+    public  RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
-    public void timerDelayRemoveDialog(long time, final Dialog d){
+    public void timerDelayRemoveDialog(long time, final Dialog d) {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 d.dismiss();

@@ -6,9 +6,7 @@ package com.example.rosangela.examplefeed.models;
 
 
 public class Brewery {
-    public String name;
-    public String formattedAddress;
-    public String photo;
+    public String formattedAddress, photo, name, logo, id;
     public float distance;
 
     public String getName() {
@@ -28,7 +26,7 @@ public class Brewery {
     }
 
     public String getLogo() {
-        return photo;
+        return logo;
     }
 
     public void setLogo(String logo) {
@@ -41,5 +39,21 @@ public class Brewery {
 
     public void setDistance(int distance) {
         this.distance = distance;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
